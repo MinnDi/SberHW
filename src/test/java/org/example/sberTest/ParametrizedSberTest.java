@@ -95,7 +95,6 @@ public class ParametrizedSberTest extends BaseTest {
     }
 
     private void fillInputField(WebElement element,String value){
-
         scrollToElementJS(element);
         try {
             Thread.sleep(1000);

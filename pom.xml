@@ -14,6 +14,9 @@
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
         <junit-platform-launcher.version>1.7.0</junit-platform-launcher.version>
         <hamcrest.version>2.2</hamcrest.version>
+        <selenium.version>3.141.59</selenium.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <encoding.type>UTF-8</encoding.type>
     </properties>
 
     <dependencies>
@@ -37,7 +40,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>${selenium.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
@@ -51,6 +54,19 @@
 
     <build>
         <plugins>
+            <!--Плагин запуска тестов -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${encoding.type}</encoding>
+                </configuration>
+            </plugin>
+
+            <!--Плагин компиляции -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
