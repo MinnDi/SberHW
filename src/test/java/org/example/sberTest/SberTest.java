@@ -23,17 +23,23 @@ public class SberTest extends BaseTest {
         wait.until(ExpectedConditions.elementToBeClickable(debCardsButton));
         debCardsButton.click();
 
-        WebElement debHeader = driver.findElement(By.xpath("//h1[@data-test-id='Product_catalog_header']"));
+        WebElement debHeader = driver.findElement(By.xpath("//h1[@class='dk-sbol-heading dk-sbol-heading_size_xl SberCardCatalog-header__heading']"));
         assertThat(debHeader.getText(),is("Дебетовые карты"));
 
-        WebElement molodCard = driver.findElement(By.xpath("//a[@data-product='Молодёжная карта']/span[contains(text(),'Заказать онлайн')]"));
+        WebElement molodCard = driver.findElement(By.xpath("//h2[contains(text(),'Молодёжная СберКарта')]/../..//a[@data-test-id='Button-primary-md']//span[contains(text(),'Оформить онлайн')]"));
         scrollToElementJS(molodCard);
         wait.until(ExpectedConditions.elementToBeClickable(molodCard));
         molodCard.click();
 
-        WebElement molodHeader = driver.findElement(By.xpath("//h1[contains(text(),'Молодёжная карта')]"));
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement molodHeader = driver.findElement(By.xpath("//h1[contains(text(),'Молодёжная СберКарта')]"));
         scrollToElementJS(molodHeader);
-        assertThat(molodHeader.getText(),is("Молодёжная карта"));
+        assertThat(molodHeader.getText(),is("Молодёжная СберКарта"));
 
         WebElement orderButton = driver.findElement(By.xpath("//a[@href='#order' and @data-test-id='PageTeaserDict_button']"));
         scrollToElementJS(molodHeader);
